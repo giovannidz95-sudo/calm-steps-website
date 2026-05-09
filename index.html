@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calm Steps Canine Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f1e8;
+      color: #2f3a32;
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(245, 241, 232, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(47, 58, 50, 0.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2f3a32;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 30px 80px;
+      background: linear-gradient(to bottom, rgba(245,241,232,0.95), rgba(245,241,232,0.98)),
+      url('https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1400&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: #2f3a32;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #5b665f;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      border-radius: 999px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: #556b5d;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #445549;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #556b5d;
+      color: #556b5d;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(85,107,93,0.08);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 120px 30px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2f3a32;
+    }
+
+    .section-subtitle {
+      max-width: 750px;
+      color: #5b665f;
+      margin-bottom: 60px;
+      font-size: 1.1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 28px;
+      transition: 0.3s;
+      border: 1px solid rgba(47, 58, 50, 0.08);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-card h3 {
+      margin-bottom: 18px;
+      font-size: 1.3rem;
+      color: #2f3a32;
+    }
+
+    .service-card p {
+      color: #5b665f;
+    }
+
+    .philosophy {
+      background: #e6e1d6;
+      border-radius: 40px;
+      padding: 80px 50px;
+    }
+
+    .philosophy ul {
+      margin-top: 30px;
+      display: grid;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .philosophy li {
+      font-size: 1.1rem;
+      color: #2f3a32;
+    }
+
+    footer {
+      padding: 60px 30px;
+      text-align: center;
+      color: #5b665f;
+      border-top: 1px solid rgba(47, 58, 50, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 80px 25px;
+      }
+
+      .philosophy {
+        padding: 50px 30px;
+      }
+    }
+  </style></head>
+<body>  <header>
+    <div class="nav">
+      <div class="logo">CALM STEPS</div><div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#approach">Approach</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+  </header>  <section class="hero">
+    <div class="hero-content">
+      <h1>Calm walks for sensitive dogs</h1><p>
+    Thoughtful and respectful canine care in Zaandam for dogs needing extra understanding.
+  </p>
+
+  <div class="buttons">
+    <a href="#contact" class="btn btn-primary">Book a Walk</a>
+    <a href="#services" class="btn btn-secondary">Explore Services</a>
+  </div>
+</div>
+
+  </section>  <section id="about">
+    <h2 class="section-title">Helping dogs feel safer outdoors</h2><p class="section-subtitle">
+  At Calm Steps, we believe every dog deserves calm, structure and understanding.
+  We provide respectful walks tailored to each dog's emotional and behavioral needs,
+  with special attention to sensitive, anxious and reactive dogs.
+</p>
+
+  </section>  <section id="services">
+    <h2 class="section-title">Our Services</h2><p class="section-subtitle">
+  Two approaches, one philosophy: calm, thoughtful and respectful canine care.
+</p>
+
+<div class="services-grid">
+
+  <div class="service-card">
+    <h3>Reactive Dog Walks</h3>
+    <p>
+      Structured one-to-one walks for dogs needing extra guidance,
+      emotional support and calm handling outdoors.
+    </p>
+  </div>
+
+  <div class="service-card">
+    <h3>Anxious & Sensitive Dogs</h3>
+    <p>
+      Gentle walks designed for insecure, fearful or easily overstimulated dogs.
+    </p>
+  </div>
+
+  <div class="service-card">
+    <h3>Regular Walks</h3>
+    <p>
+      Reliable daily walks for social and balanced dogs needing exercise and routine.
+    </p>
+  </div>
+
+  <div class="service-card">
+    <h3>Home Visits</h3>
+    <p>
+      Calm companionship, feeding and care visits during the day.
+    </p>
+  </div>
+
+</div>
+
+  </section>  <section id="approach">
+    <div class="philosophy">
+      <h2 class="section-title">Our Approach</h2><p class="section-subtitle">
+    We focus on calm, observation and trust.
+    Every dog is different, and our walks are adapted to their emotional needs and pace.
+  </p>
+
+  <ul>
+    <li>• Calm and respectful handling</li>
+    <li>• Structured one-to-one walks</li>
+    <li>• Observation-based approach</li>
+    <li>• Emotional awareness and patience</li>
+    <li>• Safe outdoor experiences</li>
+    <li>• Trust before pressure</li>
+  </ul>
+</div>
+
+  </section>  <footer id="contact">
+    <h3>Calm Steps Canine Care</h3>
+    <p>Zaandam, Netherlands</p>
+    <br>
+    <p>Instagram — WhatsApp — Email</p>
+    <br>
+    <p>Respectful canine care, one walk at a time.</p>
+  </footer></body>
+</html>
