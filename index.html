@@ -1,370 +1,753 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calm Steps Canine Care</title>
+  <title>Calm Steps | Calm walks for sensitive dogs in Zaandam</title>
+  <meta name="description" content="Calm, structured and trustworthy dog walking in Zaandam for sensitive dogs, individual walks and small group walks." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #203726;
+      --green-soft: #6f7d5d;
+      --sage: #d9ddc8;
+      --cream: #f6f2ea;
+      --card: #fffdf8;
+      --text: #232722;
+      --muted: #667060;
+      --line: #ded8cc;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f5f1e8;
-      color: #2f3a32;
+      font-family: "Inter", sans-serif;
+      background: var(--cream);
+      color: var(--text);
       line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
     }
 
     header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      background: rgba(245, 241, 232, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(47, 58, 50, 0.08);
+      z-index: 50;
+      background: rgba(255, 253, 248, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(32, 55, 38, 0.08);
     }
 
     .nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 30px;
+      height: 82px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 28px;
     }
 
-    .logo {
-      font-size: 1.2rem;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 190px;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
       font-weight: 700;
-      letter-spacing: 1px;
+      color: var(--green);
+      line-height: 0.95;
+    }
+
+    .brand-subtitle {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #2f3a32;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      opacity: 0.6;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
+      gap: 32px;
       align-items: center;
-      justify-content: center;
-      padding: 120px 30px 80px;
-      background: linear-gradient(to bottom, rgba(245,241,232,0.95), rgba(245,241,232,0.98)),
-      url('https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1400&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      line-height: 1.1;
-      margin-bottom: 25px;
-      font-weight: 700;
-      color: #2f3a32;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #5b665f;
-      max-width: 700px;
-      margin: auto;
-      margin-bottom: 40px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 16px 32px;
-      border-radius: 999px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
+      font-size: 0.88rem;
       font-weight: 600;
     }
 
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 24px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
     .btn-primary {
-      background: #556b5d;
+      background: var(--green);
       color: white;
     }
 
-    .btn-primary:hover {
-      background: #445549;
+    .btn-light {
+      border-color: rgba(255, 255, 255, 0.7);
+      color: white;
+      background: rgba(255, 255, 255, 0.08);
     }
 
-    .btn-secondary {
+    .btn-outline {
+      border-color: var(--green);
+      color: var(--green);
       background: transparent;
-      border: 1px solid #556b5d;
-      color: #556b5d;
     }
 
-    .btn-secondary:hover {
-      background: rgba(85,107,93,0.08);
+    .menu-button {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .hero {
+      position: relative;
+      height: 760px;
+      min-height: 640px;
+      margin-top: 82px;
+      overflow: hidden;
+      background: var(--green);
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: heroFade 20s infinite;
+      transform: scale(1.03);
+    }
+
+    .hero-slide:nth-child(1) { animation-delay: 0s; }
+    .hero-slide:nth-child(2) { animation-delay: 5s; }
+    .hero-slide:nth-child(3) { animation-delay: 10s; }
+    .hero-slide:nth-child(4) { animation-delay: 15s; }
+
+    @keyframes heroFade {
+      0% { opacity: 0; }
+      6% { opacity: 1; }
+      25% { opacity: 1; }
+      31% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.68), rgba(0,0,0,0.28) 42%, rgba(0,0,0,0.08));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-copy {
+      width: min(620px, 100%);
+      color: white;
+      padding-top: 20px;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--sage);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 700;
+      line-height: 1.02;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 7vw, 6.4rem);
+      max-width: 700px;
+      margin-bottom: 26px;
+    }
+
+    .hero-copy p {
+      font-size: 1.15rem;
+      max-width: 520px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 120px 30px;
+      padding: 92px 0;
     }
 
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #2f3a32;
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 44px;
     }
 
-    .section-subtitle {
-      max-width: 750px;
-      color: #5b665f;
-      margin-bottom: 60px;
-      font-size: 1.1rem;
+    .section-head h2 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      color: var(--text);
+    }
+
+    .section-head p {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 1rem;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
 
     .service-card {
-      background: #ffffff;
-      padding: 40px 30px;
-      border-radius: 28px;
-      transition: 0.3s;
-      border: 1px solid rgba(47, 58, 50, 0.08);
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 34px;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 60px rgba(32, 55, 38, 0.05);
     }
 
     .service-card h3 {
-      margin-bottom: 18px;
-      font-size: 1.3rem;
-      color: #2f3a32;
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 14px;
     }
 
     .service-card p {
-      color: #5b665f;
+      color: var(--muted);
+      margin-bottom: 26px;
     }
 
-    .philosophy {
-      background: #e6e1d6;
-      border-radius: 40px;
-      padding: 80px 50px;
-    }
-
-    .philosophy ul {
-      margin-top: 30px;
+    .price-lines {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
       display: grid;
-      gap: 15px;
-      list-style: none;
+      gap: 8px;
+      font-weight: 700;
     }
 
-    .philosophy li {
-      font-size: 1.1rem;
-      color: #2f3a32;
+    .price-lines div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .note-box {
+      margin-top: 24px;
+      padding: 26px;
+      border-radius: 24px;
+      background: #e7e6d8;
+      color: var(--green);
+      text-align: center;
+    }
+
+    .why {
+      background: #efeadf;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .why-item {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(32, 55, 38, 0.1);
+      border-radius: 22px;
+      padding: 28px;
+      min-height: 175px;
+    }
+
+    .why-item .icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+
+    .why-item h3 {
+      font-size: 1.55rem;
+      margin-bottom: 8px;
+      color: var(--green);
+    }
+
+    .why-item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 0 14px 14px;
+      background: var(--cream);
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .reviews-contact {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .reviews-placeholder {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 38px;
+    }
+
+    .reviews-placeholder h2 {
+      font-size: 3rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .empty-reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .empty-card {
+      min-height: 170px;
+      border: 1px dashed rgba(32, 55, 38, 0.25);
+      border-radius: 20px;
+      padding: 22px;
+      color: var(--muted);
+      background: rgba(246, 242, 234, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .contact-card {
+      background: var(--green);
+      color: white;
+      border-radius: 26px;
+      padding: 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-card h2 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin: 24px 0 34px;
+      color: rgba(255,255,255,0.9);
     }
 
     footer {
-      padding: 60px 30px;
-      text-align: center;
-      color: #5b665f;
-      border-top: 1px solid rgba(47, 58, 50, 0.08);
+      background: #132618;
+      color: white;
+      padding: 46px 0 28px;
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.7rem;
-      }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 30px;
+    }
 
-      .nav-links {
+    footer p, footer a {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.92rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 34px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav .btn {
         display: none;
       }
 
-      section {
-        padding: 80px 25px;
+      .menu-button {
+        display: block;
       }
 
-      .philosophy {
-        padding: 50px 30px;
+      .hero {
+        height: 680px;
+      }
+
+      .hero::after {
+        background: linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.25));
+      }
+
+      .services-grid, .why-grid, .reviews-contact, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .empty-reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 16px;
       }
     }
-  </style></head>
-<body>  <header>
-    <div class="nav">
-      <div class="logo">CALM STEPS</div><div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#approach">Approach</a>
-    <a href="#contact">Contact</a>
-  </div>
-</div>
 
-  </header>  <!-- VERSION 3 PREPARATION -->  <!-- Hero section structured for future drone video background integration -->  <!-- Future upgrade: replace static background with autoplay muted drone footage -->  <!-- Suggested formats: MP4/WebM optimized for web -->  <section class="hero">
-    <div class="hero-content">
-      <p style="letter-spacing:2px; text-transform:uppercase; color:#556b5d; margin-bottom:20px; font-weight:600;">
-        Calm Steps Canine Care
-      </p><h1>Helping sensitive dogs feel safer outdoors</h1>
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 26px, 1180px);
+      }
 
-  <p>
-    Calm, structured and respectful walks in Zaandam for dogs needing extra understanding.
-    From reactive and anxious dogs to everyday balanced walks, every service is tailored to the individual dog.
-  </p>
+      .brand-title {
+        font-size: 1.35rem;
+      }
 
-  <div class="buttons">
-    <a href="#contact" class="btn btn-primary">Book a Walk</a>
-    <a href="#services" class="btn btn-secondary">Explore Services</a>
-  </div>
-</div>
+      .brand img {
+        width: 44px;
+        height: 44px;
+      }
 
-  </section>  <section id="about">
-    <h2 class="section-title">Thoughtful canine care in Zaandam</h2><p class="section-subtitle">
-  At Calm Steps, we believe dogs deserve calm guidance, patience and emotional understanding.
-  Our approach focuses on creating safer and more structured outdoor experiences,
-  especially for dogs who may struggle with stress, overstimulation or insecurity.
-</p>
+      .hero {
+        height: 640px;
+      }
 
-<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; margin-top:60px;">
+      .hero-copy p {
+        font-size: 1rem;
+      }
 
-  <div class="service-card">
-    <h3>Calm Handling</h3>
-    <p>
-      We prioritize observation, patience and respectful communication during every walk.
-    </p>
-  </div>
+      section {
+        padding: 64px 0;
+      }
 
-  <div class="service-card">
-    <h3>Individual Attention</h3>
-    <p>
-      Sensitive dogs benefit from tailored walks adapted to their emotional pace and needs.
-    </p>
-  </div>
+      .service-card {
+        padding: 26px;
+      }
 
-  <div class="service-card">
-    <h3>Trust & Structure</h3>
-    <p>
-      We help create safer and more predictable experiences outdoors for both dogs and owners.
-    </p>
-  </div>
+      .photo-strip {
+        grid-template-columns: 1fr;
+      }
 
-</div>
+      .photo-strip img {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="Calm Steps home">
+        <img src="logo-calm-steps.png" alt="Calm Steps logo" />
+        <div>
+          <div class="brand-title">CALM<br>STEPS</div>
+          <div class="brand-subtitle">Canine Care</div>
+        </div>
+      </a>
 
-  </section>  <section id="services">
-    <h2 class="section-title">Our Services</h2><p class="section-subtitle">
-  Two approaches, one philosophy: calm, safe and respectful canine care.
-</p>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Calm Steps</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<div class="services-grid">
+      <a class="btn btn-primary" href="mailto:bookings@calmsteps.nl">Book a Walk</a>
+      <button class="menu-button" aria-label="Menu">Menu</button>
+    </div>
+  </header>
 
-  <div class="service-card">
-    <h3>Sensitive & Reactive Dog Walks</h3>
-    <p>
-      One-to-one structured walks for dogs needing extra support, emotional awareness and calm guidance outdoors.
-    </p>
-  </div>
+  <main>
+    <section id="home" class="hero" aria-label="Calm Steps homepage hero">
+      <div class="hero-slide" style="background-image: url('hero-bridge-whiskey.png');"></div>
+      <div class="hero-slide" style="background-image: url('whiskey-water.png');"></div>
+      <div class="hero-slide" style="background-image: url('whiskey-sunset.png');"></div>
+      <div class="hero-slide" style="background-image: url('whiskey-snow.png');"></div>
 
-  <div class="service-card">
-    <h3>Anxious & Insecure Dogs</h3>
-    <p>
-      Gentle walks designed for fearful, overstimulated or environmentally sensitive dogs.
-    </p>
-  </div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <div class="eyebrow">Dog walking in Zaandam</div>
+          <h1>Calm walks for sensitive dogs</h1>
+          <p>Structured, thoughtful and trustworthy dog walking in Zaandam for dogs needing balance, calm and understanding.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:bookings@calmsteps.nl">Book a Walk</a>
+            <a class="btn btn-light" href="#contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="service-card">
-    <h3>Regular Daily Walks</h3>
-    <p>
-      Reliable walks for social and balanced dogs needing exercise, structure and consistency.
-    </p>
-  </div>
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color: var(--green-soft);">Services & Pricing</div>
+            <h2>Tailored walks for real needs.</h2>
+          </div>
+          <p>Simple, clear services. Extra support is added only when a dog needs a more individualized approach.</p>
+        </div>
 
-  <div class="service-card">
-    <h3>Group Walks</h3>
-    <p>
-      Calm and balanced social walks for dogs comfortable in small groups.
-    </p>
-  </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div>
+              <h3>Group Calm Walk</h3>
+              <p>Small structured group walks focused on balance, routine and calm social interaction.</p>
+            </div>
+            <div class="price-lines">
+              <div><span>30 min</span><span>€14</span></div>
+              <div><span>60 min</span><span>€18</span></div>
+            </div>
+          </article>
 
-  <div class="service-card">
-    <h3>Dogs in Heat Care</h3>
-    <p>
-      Safe and attentive walks for female dogs during sensitive periods requiring extra management.
-    </p>
-  </div>
+          <article class="service-card">
+            <div>
+              <h3>Individual Calm Walk</h3>
+              <p>Personalized one-to-one walks adapted to each dog’s comfort level and pace.</p>
+            </div>
+            <div class="price-lines">
+              <div><span>30 min</span><span>€18</span></div>
+              <div><span>60 min</span><span>€25</span></div>
+            </div>
+          </article>
 
-  <div class="service-card">
-    <h3>Home Visits</h3>
-    <p>
-      Feeding, companionship and calm care visits during the day.
-    </p>
-  </div>
+          <article class="service-card">
+            <div>
+              <h3>Sensitive Dog Support</h3>
+              <p>Thoughtful walks for dogs needing a calmer and more individualized approach outdoors.</p>
+            </div>
+            <div class="price-lines">
+              <div><span>Extra support</span><span>+ €5–10</span></div>
+              <div><span>Based on</span><span>dog needs</span></div>
+            </div>
+          </article>
+        </div>
 
-</div>
+        <div class="note-box">
+          Pricing may vary depending on each dog’s emotional and behavioral needs. We are happy to discuss what feels right for your dog.
+        </div>
+      </div>
+    </section>
 
-  </section>  <section id="approach">
-    <div class="philosophy">
-      <h2 class="section-title">Our Approach</h2><p class="section-subtitle">
-    We focus on calm, observation and trust.
-    Every dog is different, and our walks are adapted to their emotional needs and pace.
-  </p>
+    <section id="why" class="why">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color: var(--green-soft);">Why Calm Steps</div>
+            <h2>More than a walk.</h2>
+          </div>
+          <p>A calm, structured and respectful approach for dogs who need more understanding outdoors.</p>
+        </div>
 
-  <ul>
-    <li>• Calm and respectful handling</li>
-    <li>• Structured one-to-one walks</li>
-    <li>• Observation-based approach</li>
-    <li>• Emotional awareness and patience</li>
-    <li>• Safe outdoor experiences</li>
-    <li>• Trust before pressure</li>
-  </ul>
-</div>
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="icon">🌿</div>
+            <h3>Calm handling</h3>
+            <p>No rush, no pressure. We adapt to each dog.</p>
+          </div>
+          <div class="why-item">
+            <div class="icon">🐾</div>
+            <h3>Small groups</h3>
+            <p>Balanced walks for social and friendly dogs.</p>
+          </div>
+          <div class="why-item">
+            <div class="icon">🌲</div>
+            <h3>Nature first</h3>
+            <p>Quiet routes and calm outdoor environments.</p>
+          </div>
+          <div class="why-item">
+            <div class="icon">🤝</div>
+            <h3>Trust & safety</h3>
+            <p>Your dog’s well-being is always the priority.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  </section>  <!-- FUTURE VIDEO SECTION PLACEHOLDER -->  <!-- Planned section: drone footage of Zaandam walking areas -->  <!-- Future content: calm parks, nature routes, structured walks, cinematic clips -->  <section style="max-width:1200px;margin:auto;padding:0 30px 100px;">
-    <div style="background:#dcd7ca;border-radius:35px;padding:60px;text-align:center;">
-      <h2 class="section-title">Walk environments</h2><p class="section-subtitle" style="margin:auto;">
-    Calm outdoor environments selected to create safer and more balanced walking experiences.
-    Future drone footage and walk videos will be added here.
-  </p>
+    <div class="photo-strip" aria-label="Real Calm Steps walking moments">
+      <img src="whiskey-water.png" alt="Whiskey standing in water during a calm walk" />
+      <img src="whiskey-sunset.png" alt="Whiskey during a sunset walk" />
+      <img src="whiskey-snow.png" alt="Whiskey walking in the snow" />
+      <img src="hero-bridge-whiskey.png" alt="Whiskey near a quiet green walking route" />
+    </div>
 
-  <div style="height:320px;border-radius:25px;background:#bdb7aa;display:flex;align-items:center;justify-content:center;color:#2f3a32;font-weight:600;">
-    Future drone video section
-  </div>
-</div>
+    <section id="reviews">
+      <div class="container reviews-contact">
+        <div class="reviews-placeholder">
+          <div class="eyebrow" style="color: var(--green-soft);">Reviews</div>
+          <h2>Kind words from future clients.</h2>
+          <p style="color: var(--muted); max-width: 650px;">We only want to show real reviews. This space is ready for honest feedback from future Calm Steps clients.</p>
+          <div class="empty-reviews">
+            <div class="empty-card">Review space reserved for a real client.</div>
+            <div class="empty-card">Review space reserved for a real client.</div>
+            <div class="empty-card">Review space reserved for a real client.</div>
+          </div>
+        </div>
 
-  </section>  <footer id="contact">
-    <h3>Calm Steps Canine Care</h3>
-    <p>Zaandam, Netherlands</p>
-    <br>
-    <p>Instagram — WhatsApp — Email</p>
-    <br>
-    <p>Respectful canine care, one walk at a time.</p>
-  </footer></body>
+        <aside id="contact" class="contact-card">
+          <div>
+            <div class="eyebrow" style="color: var(--sage);">Get in touch</div>
+            <h2>Let’s chat about your dog.</h2>
+            <p style="color: rgba(255,255,255,0.82);">For questions, bookings or a first introduction, send us a message.</p>
+            <div class="contact-list">
+              <a href="tel:+31617011615">+31 6 17011615</a>
+              <a href="mailto:info@calmsteps.nl">info@calmsteps.nl</a>
+              <a href="mailto:bookings@calmsteps.nl">bookings@calmsteps.nl</a>
+              <span>Zaandam, Netherlands</span>
+            </div>
+          </div>
+          <a class="btn" style="background: var(--cream); color: var(--green); width: 100%;" href="https://wa.me/31617011615">Message on WhatsApp</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-title" style="color:white;">CALM<br>STEPS</div>
+          <p style="margin-top:12px;">Calm walks for sensitive dogs.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <p>Group Calm Walk</p>
+          <p>Individual Calm Walk</p>
+          <p>Sensitive Dog Support</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:+31617011615">+31 6 17011615</a></p>
+          <p><a href="mailto:info@calmsteps.nl">info@calmsteps.nl</a></p>
+          <p><a href="mailto:bookings@calmsteps.nl">bookings@calmsteps.nl</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Calm Steps. All rights reserved.</p>
+        <p>Privacy Policy · Terms & Conditions</p>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
