@@ -184,6 +184,10 @@
       background: transparent;
     }
 
+    .nav-toggle {
+      display: none;
+    }
+
     .menu-button {
       display: none;
       background: transparent;
@@ -191,6 +195,7 @@
       font-size: 1rem;
       font-weight: 700;
       color: var(--green);
+      cursor: pointer;
     }
 
     .hero {
@@ -208,7 +213,7 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: heroFade 20s infinite;
+      animation: heroFade 25s infinite;
       transform: scale(1.02);
     }
 
@@ -216,12 +221,13 @@
     .hero-slide:nth-child(2) { animation-delay: 5s; }
     .hero-slide:nth-child(3) { animation-delay: 10s; }
     .hero-slide:nth-child(4) { animation-delay: 15s; }
+    .hero-slide:nth-child(5) { animation-delay: 20s; }
 
     @keyframes heroFade {
       0% { opacity: 0; }
-      6% { opacity: 1; }
-      25% { opacity: 1; }
-      31% { opacity: 0; }
+      5% { opacity: 1; }
+      20% { opacity: 1; }
+      25% { opacity: 0; }
       100% { opacity: 0; }
     }
 
@@ -405,6 +411,58 @@
       border-radius: 18px;
     }
 
+    .booking {
+      background: #efeadf;
+    }
+
+    .booking-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 20px 60px rgba(32, 55, 38, 0.05);
+    }
+
+    .booking-card h2 {
+      font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    .booking-card p {
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .booking-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .calendar-box {
+      border: 1px dashed rgba(32, 55, 38, 0.25);
+      background: rgba(246, 242, 234, 0.7);
+      border-radius: 24px;
+      padding: 26px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .calendar-box strong {
+      color: var(--green);
+      font-size: 1.1rem;
+    }
+
     .reviews-contact {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -432,18 +490,27 @@
       margin-top: 24px;
     }
 
-    .empty-card {
+    .empty-card,
+    .review-card {
       min-height: 135px;
-      border: 1px dashed rgba(32, 55, 38, 0.25);
+      border: 1px solid rgba(32, 55, 38, 0.14);
       border-radius: 20px;
       padding: 20px;
       color: var(--muted);
       background: rgba(246, 242, 234, 0.65);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       font-size: 0.92rem;
+    }
+
+    .review-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .review-card span {
+      color: var(--green);
+      font-weight: 700;
     }
 
     .contact-card {
@@ -496,7 +563,11 @@
     }
 
     @media (max-width: 900px) {
-      .nav-links, .nav .btn {
+      .nav {
+        height: 74px;
+      }
+
+      .nav .btn {
         display: none;
       }
 
@@ -504,16 +575,47 @@
         display: block;
       }
 
+      .nav-links {
+        position: absolute;
+        top: 74px;
+        left: 0;
+        width: 100%;
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 0;
+        background: rgba(255, 253, 248, 0.98);
+        border-bottom: 1px solid rgba(32, 55, 38, 0.1);
+        padding: 10px 20px 18px;
+      }
+
+      .nav-links a {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(32, 55, 38, 0.08);
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        display: grid;
+      }
+
       .hero {
+        margin-top: 74px;
         height: 600px;
         min-height: 560px;
+      }
+
+      .hero-slide {
+        background-position: center;
       }
 
       .hero::after {
         background: linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.25));
       }
 
-      .services-grid, .why-grid, .reviews-contact, .footer-grid {
+      .services-grid, .why-grid, .reviews-contact, .booking-card, .footer-grid {
         grid-template-columns: 1fr;
       }
 
@@ -553,8 +655,22 @@
         min-height: 520px;
       }
 
+      .hero-copy {
+        padding-top: 0;
+      }
+
       .hero-copy p {
         font-size: 1rem;
+      }
+
+      .hero-actions,
+      .booking-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn,
+      .booking-actions .btn {
+        width: 100%;
       }
 
       section {
@@ -587,16 +703,19 @@
         </div>
       </a>
 
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Open navigation menu" />
+
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
+        <a href="#booking">Booking</a>
         <a href="#why">Why Calm Steps</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="btn btn-primary" href="mailto:bookings@calmsteps.nl">Book a Walk</a>
-      <button class="menu-button" aria-label="Menu">Menu</button>
+      <a class="btn btn-primary" href="#booking">Book a Walk</a>
+      <label class="menu-button" for="nav-toggle" aria-label="Menu">Menu</label>
     </div>
   </header>
 
@@ -614,7 +733,7 @@
           <h1>Calm walks for sensitive dogs</h1>
           <p>Structured, thoughtful and trustworthy dog walking in Zaandam for dogs needing balance, calm and understanding.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:bookings@calmsteps.nl">Book a Walk</a>
+            <a class="btn btn-primary" href="#booking">Book a Walk</a>
             <a class="btn btn-light" href="#contact">Contact Us</a>
           </div>
         </div>
@@ -638,8 +757,7 @@
               <p>Small structured group walks focused on balance, routine and calm social interaction.</p>
             </div>
             <div class="price-lines">
-              <div><span>30 min</span><span>€14</span></div>
-              <div><span>60 min</span><span>€18</span></div>
+              <div><span>60 min</span><span>€12</span></div>
             </div>
           </article>
 
@@ -649,15 +767,14 @@
               <p>Personalized one-to-one walks adapted to each dog’s comfort level and pace.</p>
             </div>
             <div class="price-lines">
-              <div><span>30 min</span><span>€18</span></div>
-              <div><span>60 min</span><span>€25</span></div>
+              <div><span>60 min</span><span>€15</span></div>
             </div>
           </article>
 
           <article class="service-card">
             <div>
-              <h3>Sensitive Dog Support</h3>
-              <p>Thoughtful walks for dogs needing a calmer and more individualized approach outdoors.</p>
+              <h3>Special Needs Support</h3>
+              <p>For dogs who need extra patience, structure or a slower pace during walks.</p>
             </div>
             <div class="price-lines">
               <div><span>Extra support</span><span>+ €5–10</span></div>
@@ -668,6 +785,33 @@
 
         <div class="note-box">
           Pricing may vary depending on each dog’s emotional and behavioral needs. We are happy to discuss what feels right for your dog.
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="booking">
+      <div class="container">
+        <div class="booking-card">
+          <div>
+            <div class="eyebrow" style="color: var(--green-soft);">Booking</div>
+            <h2>Plan a calm walk.</h2>
+            <p>
+              Choose a first introduction or send us a message with your dog’s needs.
+              We’ll confirm availability and suggest the most suitable type of walk.
+            </p>
+            <div class="booking-actions">
+              <a class="btn btn-primary" href="mailto:bookings@calmsteps.nl?subject=Calm%20Steps%20booking%20request">Request a booking</a>
+              <a class="btn btn-outline" href="https://wa.me/31617011615">Message on WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="calendar-box" aria-label="Booking calendar placeholder">
+            <strong>Calendar coming soon</strong>
+            <p>
+              This space is ready for a booking calendar. Once you choose a calendar tool
+              such as Calendly, Google Calendar appointment schedule or TidyCal, we can add it here.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -718,12 +862,26 @@
       <div class="container reviews-contact">
         <div class="reviews-placeholder">
           <div class="eyebrow" style="color: var(--green-soft);">Reviews</div>
-          <h2>Kind words from future clients.</h2>
-          <p style="color: var(--muted); max-width: 650px;">We only want to show real reviews. This space is ready for honest feedback from future Calm Steps clients.</p>
+          <h2>Kind words from dog owners.</h2>
+          <p style="color: var(--muted); max-width: 650px;">
+            Real reviews will be added here as Calm Steps grows. We prefer honest feedback over generic testimonials.
+          </p>
           <div class="empty-reviews">
-            <div class="empty-card">Review space reserved for a real client.</div>
-            <div class="empty-card">Review space reserved for a real client.</div>
-            <div class="empty-card">Review space reserved for a real client.</div>
+            <div class="review-card">
+              <p>“Review space reserved for a real Calm Steps client.”</p>
+              <span>— Dog owner in Zaandam</span>
+            </div>
+            <div class="review-card">
+              <p>“Review space reserved for a real Calm Steps client.”</p>
+              <span>— Dog owner in Amsterdam</span>
+            </div>
+            <div class="review-card">
+              <p>“Review space reserved for a real Calm Steps client.”</p>
+              <span>— Calm Steps client</span>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <a class="btn btn-outline" href="mailto:info@calmsteps.nl?subject=Calm%20Steps%20review">Send a review</a>
           </div>
         </div>
 
@@ -756,7 +914,7 @@
           <h4>Services</h4>
           <p>Group Calm Walk</p>
           <p>Individual Calm Walk</p>
-          <p>Sensitive Dog Support</p>
+          <p>Special Needs Support</p>
         </div>
         <div>
           <h4>Contact</h4>
